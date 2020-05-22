@@ -3,13 +3,19 @@ class WorksController < ApplicationController
 
   # GET /works
   def index
-    @works = Work.all
+    @albums = Work.albums
+    @books = Work.books
+    @movies = Work.movies
   end
 
   # GET /works/1
  
   def show
   end
+
+  def top_ten
+  end
+
 
   # GET /works/new
   def new

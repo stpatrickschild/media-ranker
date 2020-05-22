@@ -1,0 +1,29 @@
+
+<h4><%=table_heading%></h4>
+
+<table>
+  <thead>
+    <tr>
+     
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+    
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    
+    <% works.each do |work| %>
+      <tr>
+        
+        <td><%= work.title %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+       
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,31 +1,7 @@
+<%= render partial:'work_table', locals: {table_heading: "Albums", works: @albums} %>
+<%= render partial:'work_table', locals: {table_heading: "Books", works: @books} %>
+<%= render partial:'work_table', locals: {table_heading: "Movies", works: @movies} %>
 
-<h1>Works</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Title</th>
-      <th>Creator</th>
-      <th>Publication year</th>
-      <th>Description</th>
-      
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @works.each do |work| %>
-      <tr>
-        <td><%= work.category %></td>
-        <td><%= work.title %></td>
-        <td><%= work.creator %></td>
-        <td><%= work.publication_year %></td>
-        <td><%= work.description %></td>
-       
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
 
