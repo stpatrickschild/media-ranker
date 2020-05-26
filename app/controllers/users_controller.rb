@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def login 
-    byebug
+    
     user = User.find_by(user_params)
     if user.nil?
       user = User.new(user_params.merge(joined_date: DateTime.now))

@@ -1,0 +1,9 @@
+<%= render partial:'spotlight', locals: {work: @spotlight} %>
+<hr class="root__hr" />
+
+<section class="top-ten__container">
+  <%= render partial:'topten_list', locals: {table_heading: "Albums", works: @albums} %>
+  <%= render partial:'topten_list', locals: {table_heading: "Books", works: @books} %>
+  <%= render partial:'topten_list', locals: {table_heading: "Movies", works: @movies} %>
+
+</section>

@@ -1,4 +1,4 @@
-<main>
+
 <%= render partial:'work_table', locals: {table_heading: "Albums", works: @albums} %>
 <%= render partial:'work_table', locals: {table_heading: "Books", works: @books} %>
 <%= render partial:'work_table', locals: {table_heading: "Movies", works: @movies} %>
@@ -8,4 +8,3 @@
 
 
 <%= link_to 'New Work', new_work_path %>
-</main>

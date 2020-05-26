@@ -20,6 +20,12 @@ class WorksController < ApplicationController
   end
 
   def top_ten
+    @spotlight = Work.spotlight
+    @albums = Work.top_works(:album)
+    @books = Work.top_works(:book)
+    @movies = Work.top_works(:movie)
+    # set @variable for the spotlight (this might be nil)
+    # set @Variable for each catagory , restrict it to the atmost 10
   end
 
 
@@ -31,7 +37,7 @@ class WorksController < ApplicationController
   # GET /works/1/edit
   def edit
     @work = Work.find_by(id: params[:id])
-    if work.nil?
+    if @work.nil?
       head :not_found
       return
     end
@@ -57,7 +63,9 @@ class WorksController < ApplicationController
   
   def update
       if @work.update(work_params)
-        redirect_to @work, notice: 'Work was successfully updated.' 
+        flash[:success] = "Work was successfully updated"
+        redirect_to @work
+        
       else
          render :edit  
       end

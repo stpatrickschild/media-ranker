@@ -37,18 +37,27 @@
         </li>
       </ul>
       <ul class="nav app-header__user-nav-container">
-
+      <% if @current_user.nil? %>
         <li class="nav-item app-header__nav_item">
-        <%= link_to 'Log In', login_path, class:"btn btn-primary" %>
-         
+        <%= link_to 'Log In', login_path, class:"btn btn-primary" %> 
         </li>
+        <% else %>
+        <li class="nav-item app-header__nav_item">
+        
+          <%= link_to "Logged in as #{@current_user.name}", user_path(@current_user), class:"btn btn-primary" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+        <%= link_to 'Log out', logout_path, method: :post, class:"btn btn-primary" %>
+        </li>
+        <% end %>
+         
+        
 
       </ul>
     </nav>
   </header>
-
-  <section class="alert__container">
-  <% flash.each do |name, message| %>
+   <section class="alert__container">
+      <% flash.each do |name, message| %>
       <div class="alert alert-<%=name%>">
         <span><%= message%></span>
           <!--<ul>
@@ -56,10 +65,12 @@
           </ul> -->
       </div>
       <% end %>
-    </section>
+  </section>
+
+ 
 
   <main>
     <%= yield %>
-   </main>
+  </main>
   </body>
 </html>
