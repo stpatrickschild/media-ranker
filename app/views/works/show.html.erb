@@ -1,29 +1,16 @@
-<p id="notice"><%= notice %></p>
+    <section>
+  <h2><%= @work.title %></h2>
+  <p>Created by: <%= @work.creator%></p>
+  <p>Published: <%= @work.publication_year %></p>
+  <p><%= @work.description%></p>
+  <section>
+    
+    <%= link_to 'Back to media ranks', root_path, class:"btn btn-primary" %>
+    <%= link_to 'Edit', edit_work_path(@work), class:"btn btn-primary" %>
 
-<p>
-  <strong>Category:</strong>
-  <%= @work.category %>
-</p>
+    <!--<a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/771/upvote">Upvote</a> -->
+    
+    <%= link_to 'Delete', work_path(@work), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-danger" %>
+  </section>
+</section>
 
-<p>
-  <strong>Title:</strong>
-  <%= @work.title %>
-</p>
-
-<p>
-  <strong>Creator:</strong>
-  <%= @work.creator %>
-</p>
-
-<p>
-  <strong>Publication year:</strong>
-  <%= @work.publication_year %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @work.description %>
-</p>
-
-<%= link_to 'Edit', edit_work_path(@work) %> |
-<%= link_to 'Back', works_path %>
