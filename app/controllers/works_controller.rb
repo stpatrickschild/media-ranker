@@ -31,8 +31,12 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
       if @work.save
-         redirect_to @work, notice: 'Work was successfully created.' 
+        flash.now[:success] = "Successfully created #{@work.category} #{@work.id}"
+         render :show 
+    
       else
+        flash.now[:warning] = "A problem occurred: Could not create #{@work.category}"
+        
          render :new 
       end
   

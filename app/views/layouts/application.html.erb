@@ -39,6 +39,18 @@
       
     </nav>
   </header>
+
+  <section class="alert__container">
+  <% flash.each do |name, message| %>
+      <div class="alert alert-<%=name%>">
+        <span><%= message%></span>
+          <!--<ul>
+                <li>title: can't be blank</li>
+          </ul> -->
+      </div>
+      <% end %>
+    </section>
+
   <main>
     <%= yield %>
    </main>

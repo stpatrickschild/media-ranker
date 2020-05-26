@@ -1,4 +1,6 @@
 class Work < ApplicationRecord
+  validates :title, presence: true
+
   def self.albums
     Work.where(category: "album")
   end
@@ -12,4 +14,5 @@ class Work < ApplicationRecord
   def self.books
     Work.where(category: "book")
   end
+
 end
