@@ -3,14 +3,20 @@ class WorksController < ApplicationController
 
   # GET /works
   def index
-    @albums = Work.albums
-    @books = Work.books
-    @movies = Work.movies
+    @albums = Work.where(category: :album).sort{|a, b| b.votes.count <=> a.votes.count}
+    @books = Work.where(category: :book).sort{|a, b| b.votes.count <=> a.votes.count}
+    @movies = Work.where(category: :movie).sort{|a, b| b.votes.count <=> a.votes.count}
   end
 
   # GET /works/1
  
   def show
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
+    if @work.nil?
+      head :not_found
+      return
+    end
   end
 
   def top_ten
@@ -24,6 +30,11 @@ class WorksController < ApplicationController
 
   # GET /works/1/edit
   def edit
+    @work = Work.find_by(id: params[:id])
+    if work.nil?
+      head :not_found
+      return
+    end
   end
 
   # POST /works
